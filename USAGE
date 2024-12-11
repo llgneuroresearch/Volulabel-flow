@@ -1,0 +1,41 @@
+\033[0;33m USAGE \033[0m
+
+nextflow run main.nf [OPTIONAL_ARGUMENTS] (--input)
+
+\033[0;33m Example: \033[0m
+
+nextflow pull llgneuroresearch/Volulabel-flow -r main
+nextflow run llgneuroresearch/Volulabel-flow -r main --input input -with-profile docker --qc_config config.yaml
+
+\033[0;33m DESCRIPTION \033[0m
+
+    --input=/path/to/[root]             Root folder containing multiple subjects
+
+                                        [root]
+                                        ├── S1
+                                        │   ├── *labels.nrrd
+                                        │   ├── *volume.nrrd
+                                        │   └── *brain_mask.nii.gz (optional)
+                                        └── S2
+                                            ├── *labels.nrrd
+                                            ├── *volume.nrrd
+                                            └── *brain_mask.nii.gz (optional) 
+
+\033[0;33m OPTIONAL ARGUMENTS (current value) \033[0m
+
+--run_volumetry_labels                      Run volumetry on labels ($run_volumetry_labels).
+
+--qc_config                                 YAML config file to perform quality controls on labels. ($qc_config).
+
+--output_dir                                Directory where to write the final results.
+                                            By default, will be in ($output_dir)
+
+\033[0;33m AVAILABLE PROFILES (using -profile option (e.g. -profile docker)) \033[0m
+
+docker                                      When this profile is used, the pipeline will use the Docker containers.
+
+apptainer                                   When this profile is used, the pipeline will use the Apptainer containers.
+
+singularity                                 When this profile is used, the pipeline will use the Singularity containers.
+
+slurm                                       When this profile is used, the pipeline will use the Slurm executor.
