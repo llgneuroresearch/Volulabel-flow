@@ -1,4 +1,7 @@
 # Volulabel-flow
+![GitHub Release](https://img.shields.io/github/v/release/llgneuroresearch/Volulabel-flow)
+[![Documentation Status](https://readthedocs.org/projects/avnir-documentation/badge/?version=latest)](https://avnir-documentation.readthedocs.io/en/latest/tools/pipelines.html#volulabel-flow)
+
 Volumetric pipeline for CT scan volumes in Nextflow
 
 ## Installation
@@ -37,7 +40,7 @@ nextflow run llgneuroresearch/Volulabel-flow -r main --input input -with-profile
         └── *brain_mask.nii.gz (optional)
     ```
 
-### Optional BIDS Arguments
+### Optional Arguments
 
 - `--run_volumetry_labels`: Run volumetry on labels. By default, true
 - `--qc_config`: YAML config file to perform quality controls on labels.  By default, use the yaml in the container.

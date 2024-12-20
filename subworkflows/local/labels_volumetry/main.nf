@@ -2,6 +2,7 @@ include { QC_LABELS } from '../../../modules/local/qc_labels/main.nf'
 include { VOLUMETRY_LABELS } from '../../../modules/local/volumetry_labels/main.nf'
 include { MERGE_JSONS } from '../../../modules/local/merge_jsons/main.nf'
 
+
 workflow LABELS_VOLUMETRY {
 
     take:
@@ -12,8 +13,10 @@ workflow LABELS_VOLUMETRY {
     main:
 
     ch_versions = Channel.empty()
-
-    QC_LABELS( labels.join(volumes).combine(Channel.fromPath(params.qc_config)))
+    ch_labels = labels
+        .join(volumes)
+        .map{ it -> [it[0], it[1], it[2], params.custom_qc_config ? file(params.custom_qc_config) : []]}
+    QC_LABELS( ch_labels )
     ch_versions = ch_versions.mix(QC_LABELS.out.versions.first())
 
     ch_volumetry = QC_LABELS.out.labels_nifti

@@ -4,7 +4,7 @@ process QC_LABELS {
     container "avnirlab/avnirpy:latest"
 
     input:
-    tuple val(meta), path(labels), path(volume), path(config)
+    tuple val(meta), path(labels), path(volume), path(custom_config)
 
     output:
     tuple val(meta), path("*__labels.nrrd"), emit: labels_nrrd
@@ -18,6 +18,7 @@ process QC_LABELS {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def config = task.ext.custom_qc_config ? "${custom_config}" : "/avnirpy/data/qc_labels_config.yaml"
     """
     avnir_qc_labels.py ${labels} ${volume} ${config} ${prefix}__labels.nrrd ${prefix}__volume.nrrd
     avnir_nrrd_to_nifti.py ${prefix}__labels.nrrd ${prefix}__labels.nii.gz
