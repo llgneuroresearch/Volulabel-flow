@@ -26,7 +26,8 @@ process CT_BET {
 
     nnUNetv2_predict -i input -o output -d 001 -c 3d_fullres -f all -device ${params.device}
 
-    tree output
+    ls -l output
+    ls -l output/*
     mv output/results/*.nii.gz ${prefix}__brain_mask.nii.gz
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
