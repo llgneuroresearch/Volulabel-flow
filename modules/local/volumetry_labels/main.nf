@@ -15,7 +15,7 @@ process VOLUMETRY_LABELS {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def mask = brain_mask.isEmpty() ? "" : "--brain_mask ${brain_mask}"
+    def mask = brain_mask ? "--brain_mask ${brain_mask}" : ""
     """
     avnir_compute_volume_per_label.py ${labels} volumetry.json ${mask}
     cat volumetry.json
