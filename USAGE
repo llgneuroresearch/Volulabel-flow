@@ -25,7 +25,7 @@ nextflow run llgneuroresearch/Volulabel-flow -r main --input input -with-profile
 
 --run_volumetry_labels                      Run volumetry on labels ($run_volumetry_labels).
 
---qc_config                                 YAML config file to perform quality controls on labels. ($qc_config).
+--custom_qc_config                          YAML config file to perform quality controls on labels. ($qc_config).
 
 --output_dir                                Directory where to write the final results.
                                             By default, will be in ($output_dir)
