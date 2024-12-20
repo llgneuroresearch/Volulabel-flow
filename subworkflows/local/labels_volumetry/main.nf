@@ -20,7 +20,7 @@ workflow LABELS_VOLUMETRY {
     QC_LABELS( ch_labels )
     ch_versions = ch_versions.mix(QC_LABELS.out.versions.first())
 
-    CT_BET( volumes )
+    CT_BET( QC_LABELS.out.volumes_nifti )
     ch_versions = ch_versions.mix(CT_BET.out.versions)
 
     ch_volumetry = QC_LABELS.out.labels_nifti
