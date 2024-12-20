@@ -25,6 +25,10 @@ nextflow run llgneuroresearch/Volulabel-flow -r main --input input -with-profile
 
 --run_volumetry_labels                      Run volumetry on labels ($run_volumetry_labels).
 
+--run_ct_bet                                Run CT-BET on volumes ($run_ct_bet).
+                                            If true, the pipeline will run CT-BET on the volumes except if a brain_mask.nii.gz
+                                            image is available in the subject input foler.
+
 --custom_qc_config                          YAML config file to perform quality controls on labels. ($qc_config).
 
 --output_dir                                Directory where to write the final results.

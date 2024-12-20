@@ -43,7 +43,8 @@ nextflow run llgneuroresearch/Volulabel-flow -r main --input input -with-profile
 ### Optional Arguments
 
 - `--run_volumetry_labels`: Run volumetry on labels. By default, true
-- `--qc_config`: YAML config file to perform quality controls on labels.  By default, use the yaml in the container.
+- `--run_ct_bet`: Run CT BET. By default, true. If true, the pipeline will run CT-BET on the volumes except if a brain_mask.nii.gz image is available in the subject input foler.
+- `--custom_qc_config`: YAML config file to perform quality controls on labels. By default, use the yaml in the container.
 - `--output_dir`: Directory where to write the final results. By default, will be in "./results".
 
 ### Available Profiles
