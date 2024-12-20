@@ -1,6 +1,7 @@
 include { QC_LABELS } from '../../../modules/local/qc_labels/main.nf'
 include { VOLUMETRY_LABELS } from '../../../modules/local/volumetry_labels/main.nf'
 include { MERGE_JSONS } from '../../../modules/local/merge_jsons/main.nf'
+include {CT_BET} from '../../../modules/local/ct_bet/main.nf'
 
 
 workflow LABELS_VOLUMETRY {
@@ -19,9 +20,13 @@ workflow LABELS_VOLUMETRY {
     QC_LABELS( ch_labels )
     ch_versions = ch_versions.mix(QC_LABELS.out.versions.first())
 
+    CT_BET( volumes )
+    ch_versions = ch_versions.mix(CT_BET.out.versions)
+
     ch_volumetry = QC_LABELS.out.labels_nifti
         .join(brain_masks, remainder: true)
-        .map{it -> [it[0], it[1], it[2] != null ? it[2] : []]}
+        .join(CT_BET.out.brain_mask, remainder: true)
+        .map{it -> [it[0], it[1], it[2] != null ? it[2] : it[3] != null ? it[3] : []]}
     VOLUMETRY_LABELS( ch_volumetry )
     ch_versions = ch_versions.mix(VOLUMETRY_LABELS.out.versions.first())
 
