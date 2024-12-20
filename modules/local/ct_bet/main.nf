@@ -24,7 +24,7 @@ process CT_BET {
     mkdir input output
     mv *_0000.nii.gz input
 
-    nnUNetv2_predict -i input -o output-d 001 -c 3d_fullres -f all --device ${params.device}
+    nnUNetv2_predict -i input -o output -d 001 -c 3d_fullres -f all --device ${params.device}
 
     mv /output/results/*.nii.gz ${prefix}__brain_mask.nii.gz
     cat <<-END_VERSIONS > versions.yml
