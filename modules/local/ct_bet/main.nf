@@ -18,8 +18,8 @@ process CT_BET {
     """
     nnUNetv2_install_pretrained_model_from_zip /assets/nnUNetv2_pretrained_model.zip
     volume="${volume}"
-    if [ "\${\${volume}##*_}" != "0000.nii.gz" ]; then
-        mv "${volume}" "\${\${volume}%.nii.gz}_0000.nii.gz"
+    if [ "\${volume##*_}" != "0000.nii.gz" ]; then
+        mv "${volume}" "\${volume%.nii.gz}_0000.nii.gz"
     fi
     mkdir input output
     mv *_0000.nii.gz input
