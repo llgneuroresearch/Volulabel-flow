@@ -26,7 +26,7 @@ workflow LABELS_VOLUMETRY {
     ch_volumetry = QC_LABELS.out.labels_nifti
         .join(brain_masks, remainder: true)
         .join(CT_BET.out.brain_mask, remainder: true)
-        .map{it -> [it[0], it[1], it[2] != null ? it[2] : it[3] != null ? it[3] : []]}.view()
+        .map{it -> [it[0], it[1], it[2] != null ? it[2] : it[3] != null ? it[3] : []]}
     VOLUMETRY_LABELS( ch_volumetry )
     ch_versions = ch_versions.mix(VOLUMETRY_LABELS.out.versions.first())
 
