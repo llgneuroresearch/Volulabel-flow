@@ -18,7 +18,6 @@ process VOLUMETRY_LABELS {
     def mask = brain_mask ? "--brain_mask ${brain_mask}" : ""
     """
     avnir_compute_volume_per_label.py ${labels} volumetry.json ${mask}
-    cat volumetry.json
     jq 'map(.id = "${prefix}")' volumetry.json > ${prefix}__volumetry.json
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

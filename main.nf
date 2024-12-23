@@ -11,7 +11,7 @@ if(params.help) {
     cpu_count = Runtime.runtime.availableProcessors()
     bindings = ["run_volumetry_labels":"$params.run_volumetry_labels",
                 "run_ct_bet":"$params.run_ct_bet",
-                "qc_config":"$params.qc_config",
+                "custom_qc_config":"$params.custom_qc_config",
                 "output_dir":"$params.output_dir"]
 
     engine = new groovy.text.SimpleTemplateEngine()
