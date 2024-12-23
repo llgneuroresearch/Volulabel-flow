@@ -5,7 +5,7 @@ nextflow run main.nf [OPTIONAL_ARGUMENTS] (--input)
 \033[0;33m Example: \033[0m
 
 nextflow pull llgneuroresearch/Volulabel-flow -r main
-nextflow run llgneuroresearch/Volulabel-flow -r main --input input -with-profile docker --qc_config config.yaml
+nextflow run llgneuroresearch/Volulabel-flow -r main --input input -with-profile docker
 
 \033[0;33m DESCRIPTION \033[0m
 

@@ -22,7 +22,7 @@ To run the pipeline, use the following example:
 
 ```sh
 nextflow pull llgneuroresearch/Volulabel-flow -r main
-nextflow run llgneuroresearch/Volulabel-flow -r main --input input -with-profile docker --qc_config config.yaml
+nextflow run llgneuroresearch/Volulabel-flow -r main --input input -with-profile docker
 ```
 
 ### Description
